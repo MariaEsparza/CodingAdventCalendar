@@ -1,0 +1,3 @@
+
+void ProgramAlarm ();
+void testPrints();
