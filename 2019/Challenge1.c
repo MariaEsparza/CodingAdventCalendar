@@ -6,11 +6,29 @@
 int FuelCounterUpper ()
 {
     int totalFuel= 0;
-
+    int newFuelAdded= 0;
     for (int i= 0; i < 100; i++)
     {
-        totalFuel = totalFuel + floor (modulesMass[i] / 3) - 2;
+        totalFuel = totalFuel + fuelCalculation(modulesMass[i]);
+        
+    }
+    
+    newFuelAdded = totalFuel;
+    while( 0 < fuelCalculation(newFuelAdded) )
+    {
+        printf("%d \n", newFuelAdded);
+        newFuelAdded = fuelCalculation(newFuelAdded);
+        
+        totalFuel = totalFuel + newFuelAdded;   
     }
 
+
     return totalFuel;
+}
+
+int fuelCalculation (int Mass)
+{
+    int fuel = 0;
+    fuel =  floor (Mass / divider) - offset;
+    return fuel;
 }

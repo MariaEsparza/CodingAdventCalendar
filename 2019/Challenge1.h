@@ -102,4 +102,8 @@ static int modulesMass [] = { 119962,
 98468
 };
 
+static int offset = 2;
+static int divider = 3;
+
 int FuelCounterUpper();
+int fuelCalculation (int Mass);
