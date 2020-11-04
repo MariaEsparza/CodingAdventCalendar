@@ -106,4 +106,4 @@ static int offset = 2;
 static int divider = 3;
 
 int FuelCounterUpper();
-int fuelCalculation (int Mass);
+int fuelCalculation (int Mass, int fuel);

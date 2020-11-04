@@ -6,29 +6,33 @@
 int FuelCounterUpper ()
 {
     int totalFuel= 0;
-    int newFuelAdded= 0;
     for (int i= 0; i < 100; i++)
     {
-        totalFuel = totalFuel + fuelCalculation(modulesMass[i]);
+
+        totalFuel = totalFuel + fuelCalculation(modulesMass[i], 0);
         
     }
     
-    newFuelAdded = totalFuel;
-    while( 0 < fuelCalculation(newFuelAdded) )
-    {
-        printf("%d \n", newFuelAdded);
-        newFuelAdded = fuelCalculation(newFuelAdded);
-        
-        totalFuel = totalFuel + newFuelAdded;   
-    }
+
 
 
     return totalFuel;
 }
 
-int fuelCalculation (int Mass)
+int fuelCalculation (int Init_Mass, int fuel)
 {
-    int fuel = 0;
-    fuel =  floor (Mass / divider) - offset;
-    return fuel;
+    int total = 0;
+    int mass =  floor (Init_Mass / divider) - offset;
+    if  (mass > 0)
+    {
+        fuel = fuel + mass;
+        total =  fuelCalculation(mass,fuel);
+    }
+    else
+    {
+        return fuel;
+    }
+    
+    
+    return total;
 }

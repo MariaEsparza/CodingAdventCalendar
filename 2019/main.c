@@ -10,14 +10,14 @@ int  IntCode [] = {1,12,2,3,1,1,2,3,1,3,4,3,1,5,0,3,2,1,10,19,1,6,19,23,2,23,6,2
 
 int main ()
 {
-    //int number = FuelCounterUpper();
-    //printf("%d", number);
+    int number = FuelCounterUpper();
+    printf("%d", number);
 
     //Challenge 2
     int sizeArray = sizeof(IntCode)/sizeof(IntCode[0]);
    
     //ProgramAlarm(IntCode, sizeArray);
-    searchForNounAndVerb( sizeArray);
+    //searchForNounAndVerb( sizeArray);
     //testPrints(IntCode, sizeArray);
 }
 
