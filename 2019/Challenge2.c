@@ -24,10 +24,10 @@ void ProgramAlarm (int  array[], int size)
             array[array[i+3]] = array[array[i+1]] * array[array[i+2]];
             break;
         case 99: 
-            printf("Halt Program \n");
+            //printf("Halt Program \n");
             break;
         default:
-            printf("Default case: no command was found \n");
+            //printf("Default case: no command was found \n");
             break;
 
        }       
@@ -49,12 +49,16 @@ void searchForNounAndVerb (int size)
 
             tempArray [1] = noun;
             tempArray [2] = verb;
+            
 
             ProgramAlarm(tempArray, size);
-            //testPrints(tempArray, size);
+            
             if (tempArray[0] == 19690720)
             {
+                int result = 100* noun +  verb;
                 printf("good job \n");
+                printf("result %d \n", result);
+      
             }
         }
 
