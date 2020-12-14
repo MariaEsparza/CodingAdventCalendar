@@ -9,7 +9,7 @@ void readPasswords ()
 {
     
     FILE *in_file  = fopen("/Users/mariajesusesparzapedreno/Documents/GitHub/CodingAdventCalendar/2020/passwordsList.txt", "r"); // read only 
-    
+    int validPasswords = 0;
    char line[35];
    if (in_file == NULL)
    {
@@ -50,24 +50,50 @@ void readPasswords ()
                 indexMax = indexMax + 1; 
                 
             }
+            
             char Letter = line[SpaceIndex + 1];
 
             char* endOfLine;
             endOfLine = strchr(line, '\n');
             int endOfLineIndex = (int) (endOfLine - line);
             int passwordIndex = 0;
-            int passwordSize = endOfLineIndex -1 - SpaceIndex - 3;
-            char password [passwordSize];
 
-            printf ("Start password %i \n", SpaceIndex + 4);
-            printf("password size %i \n",passwordSize);
-            for (int z = SpaceIndex + 4; z < endOfLineIndex; z= z+1)
+            /* translate max and min from char to int */
+            int max = atoi(maxOccurrenceLetterInPassword);
+            int min = atoi(minOccurrenceLetterInPassword);
+            
+            if (strcmp(line, ""))
             {
-                password [passwordIndex] = line[z];
-                passwordIndex = passwordIndex +1;
+                int passwordSize = endOfLineIndex -1 - SpaceIndex - 3;
+                int counterLetterInPassword = 0;
+                char password [passwordSize];
+            
+                for (int z = SpaceIndex + 4; z < endOfLineIndex; z= z+1)
+                {
+                
+                    password [passwordIndex] = line[z];
+                    passwordIndex = passwordIndex +1;
+                    /* amount of times the letter is in the password */
+
+                    if (line[z] == Letter)
+                    {
+                        counterLetterInPassword = counterLetterInPassword + 1;
+                    }
+                
+                }
+
+                if ( (counterLetterInPassword >= min) && ( counterLetterInPassword <= max) )
+                {
+                    validPasswords = validPasswords + 1;
+                    printf("validPasswords %i \n", validPasswords);
+                }
+                //printf("%s \n", password);
             }
-            //printf("%s \n", password);
-            //char* password = &line + SpaceIndex + 3;
+            else
+            {
+                printf("empty line \n");
+            }
+            
             
             
 
