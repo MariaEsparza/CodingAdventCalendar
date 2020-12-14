@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "Challenge1.h"
 #include "Challenge2.h"
-
+#include "Challenge3.h"
 
 int main ()
 {
@@ -11,6 +11,9 @@ int main ()
   //entriesReportSearch();
 
   /* Challenge 2 */
-  readPasswords();
+  //readPasswords();
+
+  /* Challenge 3 */
+  readGeology();
 }
 
