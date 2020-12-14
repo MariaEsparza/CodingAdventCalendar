@@ -59,8 +59,8 @@ void readPasswords ()
             int passwordIndex = 0;
 
             /* translate max and min from char to int */
-            int max = atoi(maxOccurrenceLetterInPassword);
-            int min = atoi(minOccurrenceLetterInPassword);
+            int secondPosition = atoi(maxOccurrenceLetterInPassword);
+            int firstPosition = atoi(minOccurrenceLetterInPassword);
             
             if (strcmp(line, ""))
             {
@@ -75,19 +75,21 @@ void readPasswords ()
                     passwordIndex = passwordIndex +1;
                     /* amount of times the letter is in the password */
 
-                    if (line[z] == Letter)
+                    if ( ( (firstPosition  == passwordIndex) && (line[z] == Letter) ) || 
+                    ((secondPosition == passwordIndex) && (line[z] == Letter)) )
                     {
                         counterLetterInPassword = counterLetterInPassword + 1;
                     }
                 
                 }
 
-                if ( (counterLetterInPassword >= min) && ( counterLetterInPassword <= max) )
+                if (counterLetterInPassword == 1 )
                 {
                     validPasswords = validPasswords + 1;
+
                     printf("validPasswords %i \n", validPasswords);
                 }
-                //printf("%s \n", password);
+                
             }
             else
             {
