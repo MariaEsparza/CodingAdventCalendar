@@ -14,6 +14,6 @@ int main ()
   //readPasswords();
 
   /* Challenge 3 */
-  readGeology();
+  checkTreesStadistics();
 }
 
