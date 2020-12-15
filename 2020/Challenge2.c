@@ -55,6 +55,7 @@ void readPasswords ()
 
             char* endOfLine;
             endOfLine = strchr(line, '\n');
+
             int endOfLineIndex = (int) (endOfLine - line);
             int passwordIndex = 0;
 

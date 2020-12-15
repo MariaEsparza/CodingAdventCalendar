@@ -12,7 +12,8 @@ void readGeology ()
     int horizontalIndex = 0;
     int treesCounter = 0;
     int copiesOfPatternCounter = 0;
-    int sizeOfLine = 32;
+    int sizeOfLine = 50;
+    int endOfLineIndex = 31;
     char originalLine[sizeOfLine];
     char tree = '#';
     if (in_file == NULL)
@@ -23,16 +24,27 @@ void readGeology ()
    {
         while (fgets(originalLine, sizeof(originalLine), in_file)) 
         {
-            printf("%s \n", originalLine);
-            printf("index %i, path %c \n", horizontalIndex - (sizeOfLine  ) *copiesOfPatternCounter, originalLine[horizontalIndex - (sizeOfLine  ) *copiesOfPatternCounter]);
-            if(originalLine[horizontalIndex - (sizeOfLine  ) *copiesOfPatternCounter] == tree)
+            
+            char line[endOfLineIndex];
+
+            for (int i= 0; i < endOfLineIndex; i = i +1)
+            {
+                line[i] = originalLine[i];
+            }
+            printf("%s", line);
+            printf("\n real index %i, index in line %i\n", horizontalIndex, horizontalIndex - (endOfLineIndex ) *copiesOfPatternCounter);
+            
+
+            if(line[horizontalIndex - (endOfLineIndex ) *copiesOfPatternCounter] == tree)
             {
                 treesCounter = treesCounter + 1;
+                printf("tree \n");
             }
 
             horizontalIndex = horizontalIndex + 3;
+            
 
-            if (horizontalIndex > copiesOfPatternCounter * (sizeOfLine  ) + sizeOfLine)
+            if (horizontalIndex >= copiesOfPatternCounter * (endOfLineIndex ) + endOfLineIndex)
             {
                 copiesOfPatternCounter = copiesOfPatternCounter + 1;
             }
