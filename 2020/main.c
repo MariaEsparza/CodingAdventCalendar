@@ -4,6 +4,7 @@
 #include "Challenge1.h"
 #include "Challenge2.h"
 #include "Challenge3.h"
+#include "Challenge4.h"
 
 int main ()
 {
