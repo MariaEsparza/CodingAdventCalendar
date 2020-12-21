@@ -15,6 +15,9 @@ int main ()
   //readPasswords();
 
   /* Challenge 3 */
-  checkTreesStadistics();
+  //checkTreesStadistics();
+
+  /* Challenge 4 */
+  mainPassport();
 }
 

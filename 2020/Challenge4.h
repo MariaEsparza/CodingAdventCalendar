@@ -1,4 +1,8 @@
 
+#include <stdbool.h>
+
+#define PASSPORT_SIZE   7
+
 typedef struct Passport
 {
     int byr; //(Birth Year)
@@ -11,8 +15,9 @@ typedef struct Passport
     int cid; //(Country ID)
 }Passport;
 
+
 static Passport EmptyPassport;
 
 void mainPassport();
-void readPassport(char *line, Passport passport);
-void validatePassport( Passport passportStruct, int totalValidPassports);
+void readPassport(char line[], Passport *passport, int lineSize);
+bool validatePassport( Passport *passportStruct);
