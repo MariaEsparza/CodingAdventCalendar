@@ -9,7 +9,10 @@ void mainBoardingPass()
     FILE *in_file  = fopen("/Users/mariajesusesparzapedreno/Documents/GitHub/CodingAdventCalendar/2020/seatsID.txt", "r"); // read only 
     char originalLine[LINESIZE + 2]; // (+1 is \n)
 
-    int highestSeatNumber = 0;
+
+    int seatsIDs[TOTALSEATS];
+    int* seatsIDsPointer;
+    int counterSeatsBuffer = 0;
     
 
     if (in_file == NULL)
@@ -70,17 +73,24 @@ void mainBoardingPass()
                 }
 
             }
-            printf("finalRow %i \n", finalRow);
-            printf("finalSeatNumber %i \n", finalSeatNumber);
+            //printf("finalRow %i \n", finalRow);
+            //printf("finalSeatNumber %i \n", finalSeatNumber);
 
-            int seatID = finalRow * 8 + finalSeatNumber;
-            printf("seatID %i \n", seatID);
-            if (seatID > highestSeatNumber)
+            seatsIDs [counterSeatsBuffer] = finalRow * 8 + finalSeatNumber;
+            counterSeatsBuffer = counterSeatsBuffer + 1;
+
+        }
+        seatsIDsPointer = seatsIDs;
+        orderSeat (seatsIDsPointer);
+
+        for (int i = 1; i< TOTALSEATS; i = i +1)
+        {
+            if (seatsIDsPointer[i] > seatsIDsPointer[i-1] +1 )
             {
-                highestSeatNumber = seatID;
+                printf("my seat ID %i \n", seatsIDsPointer[i] -1);
             }
         }
-        printf("highestSeatNumber %i \n", highestSeatNumber);
+
    }
 }
 
@@ -101,4 +111,23 @@ int search(int lower_bound, int upper_bound, char key)
         }
 
     return -1;
+}
+
+void orderSeat (int *seatsIDArrsy)
+{
+    for (int index = 0; index < TOTALSEATS; index = index + 1)
+    {
+        for ( int j = index + 1; j  < TOTALSEATS; j = j + 1 )
+        {
+
+            if(seatsIDArrsy[index]>seatsIDArrsy[j]) 
+            {
+              int temp = seatsIDArrsy[index];
+              seatsIDArrsy[index] = seatsIDArrsy[j];
+              seatsIDArrsy[j] = temp;
+            }
+        }
+
+    }
+
 }
