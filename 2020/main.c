@@ -5,6 +5,7 @@
 #include "Challenge2.h"
 #include "Challenge3.h"
 #include "Challenge4.h"
+#include "Challenge5.h"
 
 int main ()
 {
@@ -18,6 +19,9 @@ int main ()
   //checkTreesStadistics();
 
   /* Challenge 4 */
-  mainPassport();
+  //mainPassport();
+
+  /* Challenge 5 */
+  mainBoardingPass();
 }
 
