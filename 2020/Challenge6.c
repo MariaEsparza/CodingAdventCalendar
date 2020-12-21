@@ -15,8 +15,14 @@ void detectAnswersInGroup ()
     int totalPositiveAnswers = 0;
     
     //buffer that will contain a flag per letter per group
-    bool groupAnswerBuffer[LINEMAXSIZE - 1];
-    memset(groupAnswerBuffer, 0, LINEMAXSIZE - 1);
+    int groupAnswerBuffer[LINEMAXSIZE - 1];
+    for(int j = 0; j < LINEMAXSIZE - 1; j = j + 1)
+    {
+        groupAnswerBuffer [j] = 0;
+    }
+
+
+    int groupCounter = 0;
 
     if (in_file == NULL)
    {
@@ -35,16 +41,18 @@ void detectAnswersInGroup ()
                 // count the number of yes in the group
                 for(int j = 0; j < LINEMAXSIZE - 1; j = j + 1)
                 {
-                    if(groupAnswerBuffer [j] == true)
+
+                    if(groupAnswerBuffer [j] == groupCounter)
                     {
-                        printf("%i ", j);
-                        totalPositiveAnswers = totalPositiveAnswers +1;
+                        totalPositiveAnswers =  totalPositiveAnswers + 1;
                     }
+                    // clean answersBuffer
+                    groupAnswerBuffer [j] = 0;
 
                 }
-                // clean answersBuffer
-                printf("\n");
-                memset(groupAnswerBuffer, 0, LINEMAXSIZE - 1);
+                
+                groupCounter = 0;
+
             }
             else
             {
@@ -52,19 +60,17 @@ void detectAnswersInGroup ()
                 endOfLine = strchr(originalLine, '\n');
                 int endOfLineIndex = (int) (endOfLine - originalLine);
 
+                groupCounter = groupCounter + 1;
                 for (int i = 0; i < endOfLineIndex; i = i + 1)
                 {
                     char questionID = originalLine [i];
-
-                    if(groupAnswerBuffer[questionID - ASCII_OFFSET] == false)
-                    {
-                        groupAnswerBuffer[questionID - ASCII_OFFSET] = true;
-                    }
+                    groupAnswerBuffer[(int)questionID - ASCII_OFFSET] = groupAnswerBuffer[(int)questionID - ASCII_OFFSET] + 1;
 
                 }
             }
             
         }
+
         printf("totalPositiveAnswers %i \n", totalPositiveAnswers);
    }
 }
