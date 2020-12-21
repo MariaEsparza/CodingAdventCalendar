@@ -6,6 +6,7 @@
 #include "Challenge3.h"
 #include "Challenge4.h"
 #include "Challenge5.h"
+#include "Challenge6.h"
 
 int main ()
 {
@@ -22,6 +23,9 @@ int main ()
   //mainPassport();
 
   /* Challenge 5 */
-  mainBoardingPass();
+  //mainBoardingPass();
+  
+    /* Challenge 6 */
+  detectAnswersInGroup();
 }
 
